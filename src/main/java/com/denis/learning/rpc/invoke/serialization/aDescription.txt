@@ -1,0 +1,13 @@
+What happens when final transient field gets serialized?
+
+What happens when static transient or final static transient field gets serialized?
+
+What happens to private members of a serializing class?
+
+What if a super class or interface does not implement Serializable while the derived class is getting serialized?
+
+How do I validate an object after serialization? Is it really important?
+
+How to get auto generated or private serialversionuid while deserialization in progress?
+
+What happens to non-serialized aggregated object i.e. object with "has-a" relationship?

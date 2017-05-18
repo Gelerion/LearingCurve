@@ -1,0 +1,39 @@
+Buffers are often used for sequential reading and writing. That is, first some data is read from a
+file, a network connection, or some other source and stored in the buffer. Next, data is drained from the
+buffer and written into a different file, network connection, or some other destination. However, the
+output that drains data from the buffer may not move as quickly as the input that fills the buffer.
+For instance, if data is being read from a file and written onto a network connection, input is likely
+to substantially outpace output.
+
+IntBuffer buffer = IntBuffer.allocate(8);
+buffer.put(10).put(20).put(30).put(40).put(50);
+
+
+buffer.flip( );
+int[] data = new int[3]
+buffer.get(data);
+
+|10|20|30|40|50|  |  |  |
+  0  1  2  3  4  5  6  7  8
+                 ^
+                 |
+               position
+               + limit
+
+
+|10|20|30|40|50|  |  |  |
+  0  1  2  3  4  5  6  7  8
+           ^     ^
+           |     |
+          pos   limit
+
+If we just want to continue draining from this point, we’re good to go. However,
+if instead we now want to fill the buffer with more data, we have several problems.
+
+buffer.compact( )
+
+|40|50|  |  |  |  |  |  |
+  0  1  2  3  4  5  6  7  8
+        ^                 ^
+        |                 |
+       pos              limit

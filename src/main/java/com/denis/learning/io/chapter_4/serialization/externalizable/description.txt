@@ -1,0 +1,17 @@
+The implementation of these methods is completely responsible for saving the object’s state,
+including the state stored in its superclasses. This is the primary difference between
+implementing Externalizable and providing private readObject( ) and writeObject( ) methods.
+Since some of the superclass’s state may be stored in private or package-accessible fields that
+are not visible to the Externalizable object, saving and restoring can be a tricky proposition.
+Furthermore, externalizable objects are responsible for tracking their own versions; the
+virtual machine assumes that whatever version of the externalizable class is available when
+the object is deserialized is the correct one. It does not check the serialVersionUID field
+as it does for merely serializable objects. If you want to check for different versions of the class,
+you must write your own code to do the checks.
+
+For example, suppose you want a list that can be serialized no matter what it contains, one that will
+never throw a NotSerializableException even if it contains objects that aren’t serializable. You can
+do this by creating a subclass of ArrayList that implements Externalizable, as in Example 13-5.
+The writeExternal( ) method uses instanceof to test whether each element is or is not serializable
+before writing it onto the output. If the element does not implement Serializable, writeExternal( )
+writes null in its place

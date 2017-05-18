@@ -1,0 +1,27 @@
+The following changes are compatible:
+
+    Most changes to constructors and methods, whether instance or static. Serialization doesn’t touch the methods of a class. The exceptions are those methods directly involved in the serialization process, particularly writeObject( ) and readObject( ).
+
+    All changes to static fields—changing their type, their names, adding or removing them, etc. Serialization ignores all static fields.
+
+    All changes to transient fields—changing their type, their names, adding or removing them, etc. Serialization ignores all transient fields.
+
+    Adding or removing an interface (except the Serializable interface) from a class. Interfaces say nothing about the instance fields of a class.
+
+    Adding or removing inner classes.
+
+    Changing the access specifiers of a field. Serialization does not respect access protection.
+
+    Changing a field from static to nonstatic or transient to nontransient. This is the same as adding a field.
+
+The following changes are incompatible and thus prevent deserialization of serialized objects:
+
+    Changing the name of a class.
+
+    Changing the type of an instance field.
+
+    Changing the superclass of a class. This may affect the inherited state of an object.
+
+    Changing the writeObject( ) or readObject( ) method (discussed later) in an incompatible fashion.
+
+    Changing a class from Serializable to Externalizable (discussed later) or Externalizable to Serializable.

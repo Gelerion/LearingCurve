@@ -1,0 +1,5 @@
+Like other have said, use FileChannel.transferTo() or FileChannel.transferFrom(). The key advantage
+here is that the JVM uses the OS's access to DMA (Direct Memory Access https://en.wikipedia.org/wiki/Direct_memory_access), if present.
+(This is implementation dependent, but modern Sun and IBM versions on general purpose CPUs are good to go.)
+ What happens is the data goes straight to/from disc, to the bus, and then to the destination...
+ bypassing any circuit through RAM or the CPU.
