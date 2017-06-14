@@ -1,14 +1,9 @@
 package com.denis.learning.codefight.thumbtack_bot.fight_3;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.regex.Pattern;
 
 public class ClusterizeSpam {
     public static void main(String[] args) {
