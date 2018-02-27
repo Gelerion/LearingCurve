@@ -1,7 +1,5 @@
 package com.denis.learning.parser;
 
-import jdk.nashorn.internal.runtime.ParserException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -39,7 +37,7 @@ public class Tokenizer {
                 }
             }
 
-            if (!match) throw new ParserException("Unexpected character in input: "+tmp);
+            if (!match) throw new RuntimeException("Unexpected character in input: "+tmp);
         }
 
     }

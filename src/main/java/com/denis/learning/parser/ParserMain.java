@@ -1,6 +1,5 @@
 package com.denis.learning.parser;
 
-import jdk.nashorn.internal.runtime.ParserException;
 
 public class ParserMain {
     public static void main(String[] args) {
@@ -21,7 +20,7 @@ public class ParserMain {
                 System.out.println("" + tok.getToken() + " " + tok.getSequence());
             }
         }
-        catch (ParserException e) {
+        catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
     }

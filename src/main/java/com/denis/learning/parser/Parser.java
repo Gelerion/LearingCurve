@@ -3,7 +3,6 @@ package com.denis.learning.parser;
 import java.util.LinkedList;
 import java.util.List;
 
-import jdk.nashorn.internal.runtime.ParserException;
 
 public class Parser {
     private LinkedList<Token> tokens;
@@ -16,7 +15,7 @@ public class Parser {
         expression();
 
         if (lookAhead.getToken() != Token.EPSILON)
-            throw new ParserException("Unexpected symbol " + lookAhead + " found");
+            throw new RuntimeException("Unexpected symbol " + lookAhead + " found");
     }
 
     private void expression() {
@@ -108,7 +107,7 @@ public class Parser {
             expression();
 
             if(lookAhead.getToken() == Token.CLOSE_BRACKET)
-                throw new ParserException("Closing brackets expected and " + lookAhead.getSequence() + " found instead");
+                throw new RuntimeException("Closing brackets expected and " + lookAhead.getSequence() + " found instead");
 
             nextToken();
         }
@@ -129,7 +128,7 @@ public class Parser {
         }
         else
         {
-            throw new ParserException("Unexpected symbol "+lookAhead.getSequence()+" found");
+            throw new RuntimeException("Unexpected symbol "+lookAhead.getSequence()+" found");
         }
     }
 
